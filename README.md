@@ -27,7 +27,7 @@ npm install -g scaffolding
 }
 ```
 
-2. Execute Script.
+2. Execute the script.
 ```bash
 scaffolding
 ```
@@ -47,7 +47,7 @@ scaffolding [ConfigFile]
 
 ## Global config file
 
-Script will search for `.scaffolding.json` in current and parents directories. The file closes to current directory will be used.  
+The script searches for `.scaffolding.json` in current and parent directories. The closest file to current directory is taken.
 
 Structure of `.scaffolding.json`: 
 ```json
@@ -57,7 +57,9 @@ Structure of `.scaffolding.json`:
 
 ``` 
 
-`configDirectory` - relative to `.scaffolding.json` path where Script will search for scaffolding configs
+`configDirectory` - relative to `.scaffolding.json` path where Script will search for scaffolding configs.
+
+Thanks to it the script can be run quicker e.g. `scaffolding my-config.json` instead of `scaffolding ../../scaffoldings/my-config.json`
 
 
 ## Further customization
