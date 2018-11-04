@@ -59,7 +59,7 @@ Structure of `.scaffolding.json`:
 
 `configDirectory` - relative to `.scaffolding.json` path where Script will search for scaffolding configs.
 
-Thanks to it the script can be run quicker e.g. `scaffolding my-config.json` instead of `scaffolding ../../scaffoldings/my-config.json`
+> Thanks to it the script can be run quicker e.g. `scaffolding my-config.json` instead of `scaffolding ../../scaffoldings/my-config.json`
 
 
 ## Further customization
