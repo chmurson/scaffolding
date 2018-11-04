@@ -36,6 +36,10 @@ scaffolding
 
 4. Generates files by tpl settings. The file contents, filename will be replaced with prompt answer.
 
+## Example of use 
+
+![Example of use](https://chmurson.github.io/scaffolding/example-of-use.gif)
+
 ## CLI 
 
 ```bash
