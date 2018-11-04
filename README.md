@@ -7,7 +7,7 @@ npm install -g scaffolding
 
 ##Simple to use
 1.Prepare scaffolding.json
-```js
+```json
 {
   "properties": {
     "name": {
@@ -26,28 +26,49 @@ npm install -g scaffolding
   }
 }
 ```
-2. Execute scaffolding.
-3. Input prompt answer.
-4. Generates files by tpl settings. The file contents, filename will be replaced with prompt answer.
-```sh
+
+2. Execute Script.
+```bash
 scaffolding
 ```
 
-##Advanced
+3. Input prompt answer.
 
-###Offcourse! Generally, project involved many developers
-1. Prepare .default.scaffolding.json
-```js
+4. Generates files by tpl settings. The file contents, filename will be replaced with prompt answer.
+
+##CLI 
+
+```bash
+scaffolding [ConfigFile]
+```
+
+`[ConfigFile]` - relative path to scaffolding configuration json file. _Default: scaffolding.json_
+
+
+##Global config file
+
+Script will search for `.scaffolding.json` in current and parents directories. The file closes to current directory will be used.  
+
+Structure of `.scaffolding.json`: 
+```json
+{
+  "configDirectory": "scaffolding"
+}
+
+``` 
+
+`configDirectory` - relative to `.scaffolding.json` path where Script will search for scaffolding configs
+
+
+##Further customization
+1. Prepare `.default.scaffolding.json`
+```json
 {
   "author": "sideroad"
 }
 ```
 2. You can override the default setting!
 
-###Use your favorite name for json
-```sh
-scaffolding chocolate.json
-```
 
 ##Dependencies with awesome library
 * [prompt](https://github.com/flatiron/prompt)

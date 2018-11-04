@@ -1,12 +1,64 @@
 #!/usr/bin/env node
 
 // Run scaffolding.
-var fs = require('fs'),
-    json = process.argv[2] || 'scaffolding.json';
+const fs = require('fs'),
+    path = require('path'),
+    configPath = process.argv[2] || 'scaffolding.json';
 
-if( !fs.existsSync(json) ){
-  throw Error("scaffolding.json not found");
+const globalConfig = findGlobalConfig();
+const validConfigPath = getValidConfigPath(configPath, globalConfig);
+const configAbsDirname = path.dirname(path.resolve(validConfigPath));
+const config = JSON.parse(fs.readFileSync(validConfigPath,'utf8').toString().replace(/\n/g,''));
+
+require('../lib/scaffolding').generate( config, configAbsDirname);
+
+/**
+ * @param dirname
+ * @return {{}} config object
+ */
+function findGlobalConfig(dirname = path.resolve('')){
+  const globalConfigFileName = ".scaffolding.json";
+  const defaultGlobalConfig = {
+      configDirectory: ""
+  }
+
+  const configPath = path.resolve(dirname, globalConfigFileName);
+  if (fs.existsSync(configPath)){
+    log(`Found global config file at: ${configPath}`);
+    const config = JSON.parse(fs.readFileSync(configPath, 'utf8').toString());
+    // turning relative path of "configDirectory" into absolute
+    config.configDirectory = path.resolve(dirname, config.configDirectory || "");
+    return config;
+  }
+
+  const nextDirname = path.resolve(dirname, '..');
+  if (nextDirname === dirname){
+    return defaultGlobalConfig;
+  }
+
+  return findGlobalConfig(nextDirname);
 }
 
-var config = JSON.parse(fs.readFileSync(json,'utf8').toString().replace(/\n/g,''));
-require('../lib/scaffolding').generate( config );
+function getValidConfigPath(configPath, globalConfig){
+    const pathsToCheck = [
+        path.resolve(configPath),
+        path.resolve(globalConfig.configDirectory, configPath)
+    ].filter(filterUniq);
+
+    const validPath = pathsToCheck.find(path=>fs.existsSync(path));
+
+    if (!validPath){
+      const paths = pathsToCheck.join("\n")
+      throw new Error(`Config file was not found at any of following paths: \n${paths}\n`);
+    }
+
+    return validPath;
+}
+
+function log(msg){
+  console.log(msg);
+}
+
+function filterUniq(item, pos, array) {
+    return array.indexOf(item) == pos;
+}
