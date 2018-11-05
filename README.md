@@ -2,7 +2,7 @@
 
 ## Install
 ```sh
-npm install -g scaffolding
+npm install -g @chmurson/scaffolding
 ```
 
 ## Simple to use
