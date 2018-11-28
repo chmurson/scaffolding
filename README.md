@@ -6,7 +6,21 @@ npm install -g @chmurson/scaffolding
 ```
 
 ## Simple to use
-1.Prepare scaffolding.json
+1. Prepare scaffolding templates
+
+`tpl/src/base.js`
+```
+This is template of {{ name }}.
+The name can be written in different cases, e.g.
+param case: {{#paramCase}}{{ name }}{{/paramCase}}
+camel case: {{#camelCase}}{{ name }}{{/camelCase}}
+```
+
+> Note: Case conversations are made via npm module `change-case`. For all possible 
+methods please see [its README.md](https://www.npmjs.com/package/change-case)
+
+
+2. Prepare scaffolding.json 
 ```json
 {
   "properties": {
@@ -27,14 +41,14 @@ npm install -g @chmurson/scaffolding
 }
 ```
 
-2. Execute the script.
+3. Execute the script.
 ```bash
 scaffolding
 ```
 
-3. Input prompt answer.
+4. Input prompt answer.
 
-4. Generates files by tpl settings. The file contents, filename will be replaced with prompt answer.
+5. Generates files by tpl settings. The file contents, filename will be replaced with prompt answer.
 
 ## Example of use 
 
