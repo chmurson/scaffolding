@@ -1,7 +1,7 @@
 {
   "name": "@chmurson/scaffolding",
   "description": "Application scaffolding for any project.",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "homepage": "https://github.com/chmurson/scaffolding",
   "author": "chmurson <chmurson@gmail.com>",
   "repository": {
