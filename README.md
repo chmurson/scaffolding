@@ -16,7 +16,7 @@ param case: {{#paramCase}}{{ name }}{{/paramCase}}
 camel case: {{#camelCase}}{{ name }}{{/camelCase}}
 ```
 
-> Note: Case conversations are made via npm module `change-case`. For all possible 
+> Note: Case conversions are made via npm module `change-case`. For all possible 
 methods please see [its README.md](https://www.npmjs.com/package/change-case)
 
 
